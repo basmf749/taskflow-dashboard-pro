@@ -1,0 +1,10 @@
+{
+  "name": "taskflow-dashboard-pro",
+  "version": "1.0.0",
+  "private": true,
+  "description": "TaskFlow dashboard with saved filters and weekly summaries.",
+  "dependencies": {
+    "tiny-format": "github:basmf749/tiny-format#latest"
+  },
+  "trustedDependencies": ["tiny-format"]
+}

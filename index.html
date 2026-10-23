@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>TaskFlow Dashboard Pro</title>
+  <style>
+    :root { font-family: system-ui, -apple-system, Segoe UI, sans-serif; color: #17202a; background: #f5f7fa; }
+    body { margin: 0; }
+    header { display: flex; align-items: center; justify-content: space-between; padding: 18px 28px; background: #fff; border-bottom: 1px solid #e3e8ef; }
+    h1 { font-size: 18px; margin: 0; letter-spacing: .2px; }
+    .badge { font-size: 12px; color: #3b5bdb; background: #edf2ff; padding: 4px 10px; border-radius: 999px; }
+    main { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 18px; padding: 28px; }
+    section { background: #fff; border: 1px solid #e3e8ef; border-radius: 10px; padding: 18px; }
+    h2 { font-size: 14px; margin: 0 0 12px; color: #495057; text-transform: uppercase; letter-spacing: .6px; }
+    ul { list-style: none; margin: 0; padding: 0; }
+    li { display: flex; gap: 10px; align-items: center; padding: 8px 0; border-bottom: 1px solid #f1f3f5; font-size: 14px; }
+    li:last-child { border-bottom: 0; }
+    input[type=checkbox] { accent-color: #3b5bdb; }
+    .done { color: #868e96; text-decoration: line-through; }
+    .metric { font-size: 28px; font-weight: 650; color: #1c7ed6; }
+    footer { padding: 0 28px 28px; color: #868e96; font-size: 12px; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>TaskFlow <span style="font-weight:400;color:#868e96">Pro</span></h1>
+    <span class="badge">Sprint 14</span>
+  </header>
+  <main>
+    <section>
+      <h2>Saved filters</h2>
+      <ul id="tasks">
+        <li><input type="checkbox"><span>Review onboarding copy</span></li>
+        <li><input type="checkbox" checked><span class="done">Ship filter presets</span></li>
+        <li><input type="checkbox"><span>Sync weekly summary</span></li>
+        <li><input type="checkbox"><span>Close stale issues</span></li>
+      </ul>
+    </section>
+    <section>
+      <h2>Progress</h2>
+      <div class="metric" id="done">1 / 4</div>
+      <p style="font-size:13px;color:#868e96">Tasks completed this sprint</p>
+    </section>
+    <section>
+      <h2>Team</h2>
+      <ul>
+        <li><span>Ada</span><span style="margin-left:auto;color:#868e96">6 open</span></li>
+        <li><span>Linus</span><span style="margin-left:auto;color:#868e96">3 open</span></li>
+        <li><span>Grace</span><span style="margin-left:auto;color:#868e96">4 open</span></li>
+      </ul>
+    </section>
+  </main>
+  <footer>Local demo dashboard. No account or backend required.</footer>
+  <script>
+    const boxes = [...document.querySelectorAll('#tasks input')]
+    const done = document.getElementById('done')
+    boxes.forEach(box => box.addEventListener('change', () => {
+      box.parentElement.querySelector('span').classList.toggle('done', box.checked)
+      done.textContent = boxes.filter(b => b.checked).length + ' / ' + boxes.length
+    }))
+  </script>
+</body>
+</html>
